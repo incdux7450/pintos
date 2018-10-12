@@ -47,7 +47,10 @@ struct kernel_thread_frame
 struct sleepThread
 {
 	int wakeTime;
-	thread
+	struct thread *id;
+	struct sleepThread *next;
+};
+static struct sleepThread *sleepHead = NULL;
 
 /* Statistics. */
 static long long idle_ticks;    /* # of timer ticks spent idle. */
@@ -62,7 +65,6 @@ static unsigned thread_ticks;   /* # of timer ticks since last yield. */
    If true, use multi-level feedback queue scheduler.
    Controlled by kernel command-line option "-o mlfqs". */
 bool thread_mlfqs;
-
 static void kernel_thread (thread_func *, void *aux);
 
 static void idle (void *aux UNUSED);

@@ -44,6 +44,10 @@ struct kernel_thread_frame
     thread_func *function;      /* Function to call. */
     void *aux;                  /* Auxiliary data for function. */
   };
+struct sleepThread
+{
+	int wakeTime;
+	thread
 
 /* Statistics. */
 static long long idle_ticks;    /* # of timer ticks spent idle. */
